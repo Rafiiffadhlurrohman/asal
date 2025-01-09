@@ -4,13 +4,13 @@ import pandas as pd
 
 def load_data(filename):
     if os.path.exists(filename):
-        data = pd.read_csv(filename)
+        data = pd.read_excel(filename)
     else:
         data = pd.DataFrame(columns=["Nama", "Ukuran", "Jumlah"])
     return data
 
 def save_data(data, filename):
-    data.to_csv(filename, index=False)
+    data.to_excel(filename, index=False)
 
 def add_stock(data, name, size, quantity):
     if ((data["Nama"] == name) & (data["Ukuran"] == size)).any():
@@ -36,7 +36,7 @@ def subtract_stock(data, name, size, quantity):
 def main():
     st.title(":blue[KONVEKSI DAVA]")
 
-    filename = 'data_stok_konveksi.csv'
+    filename = 'data_stok_konveksi.xlsx'
     data = load_data(filename)
 
     menu = ["Tambah Stok", "Kurangi Stok", "Lihat Stok"]
